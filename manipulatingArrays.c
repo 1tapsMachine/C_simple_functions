@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-
 void printArray(int array[], int size){
     int *pArr;
     pArr = &array[0];
@@ -32,7 +31,15 @@ void modifyElement(int *array, int size, int index){
     }
     printf("--------------------\n");
 }
-
+void deleteElement(int *array, int size, int index){
+    printf("--------------------\n");
+    array[index]=NULL;
+    for (int i=index;i<size;i++){
+        array[i]=array[i+1];
+    }
+    printf("Element deleted\n");
+    printf("--------------------\n");
+}
 int main(){
     int array[5]={1,2,3,4,5};
     int size = sizeof(array)/sizeof(array[0]);
@@ -59,15 +66,23 @@ int main(){
             }    
         }
         else if (choice==3){
-            
+            int index;;
+            printf("Enter index: ");
+            scanf("%d",&index);
+            deleteElement(array,size,index);
+            size--;
         }
         else if (choice==4){
-
+            
         }
         else if (choice==5){
 
         }
-        else {
+        else if (choice==0){
+            printf("Exiting...\n");
+            exit(0);
+        }
+        else{
             printf("Invalid choice\n");
         }
         
